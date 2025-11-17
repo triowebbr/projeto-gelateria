@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html
+  lang="pt-br"
+  xmlns:mso="urn:schemas-microsoft-com:office:office"
+  xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trabalhe Conosco - Gelateria Romano</title>
+    <link rel="stylesheet" href="style/style.css" />
+
+    <!--[if gte mso 9
+      ]><xml>
+        <mso:CustomDocumentProperties>
+          <mso:_ApprovalStatus msdt:dt="string">0</mso:_ApprovalStatus>
+          <mso:_ApprovalAssignedTo msdt:dt="string"></mso:_ApprovalAssignedTo>
+          <mso:_ApprovalRespondedBy msdt:dt="string"></mso:_ApprovalRespondedBy>
+        </mso:CustomDocumentProperties> </xml
+    ><![endif]-->
+  </head>
+  <body>
+    <!-- Header Simplificado -->
+    <header class="page-header">
+      <div class="container">
+        <a class="nav-logo" href="site.html">
+          <img src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666409/logo_sf0tjp.png" alt="Gelateria Romano Logo" />
+        </a>
+        <a href="site.html" class="button">Voltar ao Início</a>
+      </div>
+    </header>
+
+    <main>
+      <section id="trabalhe-conosco-form">
+        <div class="container">
+          <h2 class="section-title">Trabalhe Conosco</h2>
+          <p class="lead text-center">
+            Ama gelato tanto quanto nós? Quer fazer parte de uma equipe
+            apaixonada por sabor e qualidade? Preencha o formulário abaixo!
+          </p>
+          <form id="form-trabalhe" class="contact-form" novalidate>
+            <div class="success-message" style="display: none">
+              Sua candidatura foi enviada com sucesso! Boa sorte.
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="nome"
+                placeholder="Nome completo"
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Seu melhor e-mail"
+                required
+              />
+              <input
+                type="tel"
+                name="telefone"
+                placeholder="Telefone (Opcional)"
+                pattern="[0-9]*"
+                inputmode="numeric"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="file"
+                id="curriculo"
+                name="curriculo"
+                class="file-input"
+                accept=".pdf"
+                required
+              />
+              <label for="curriculo" class="file-upload-label"
+                >Anexe seu currículo (PDF):</label
+              />
+            </div>
+            <textarea
+              name="mensagem"
+              rows="6"
+              placeholder="Fale um pouco sobre você..."
+            ></textarea>
+            <button type="submit" class="button button-large">
+              Enviar Candidatura
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="java.js"></script>
+  </body>
+</html>

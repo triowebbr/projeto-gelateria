@@ -1,0 +1,778 @@
+/* --- Variáveis Globais --- */
+:root {
+  --cor-principal-escura: #572816;
+  --cor-principal-clara: #c59e58; /* Dourado */
+  --cor-bege: #f5f0e6; /* Um bege mais claro para combinar */
+  --cor-creme: #f0e5de;
+  --cor-destaque: #c59e58; /* Dourado */
+  --cor-destaque-hover: #a9894a; /* Dourado mais escuro para hover */
+  --altura-nav: 70px; /* Altura da barra de navegação */
+}
+
+/* --- Reset Básico e Estilos Globais --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Classe para impedir o scroll quando o menu mobile está aberto */
+.no-scroll {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- Classes Utilitárias --- */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: 600;
+  color: white;
+  background-color: var(--cor-destaque);
+  border: none;
+  border: 1px solid transparent; /* Adiciona borda para transição suave */
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #fff;
+  color: var(--cor-destaque); /* Cor do texto #c59e58 */
+  border-color: var(--cor-destaque); /* Borda na mesma cor do texto */
+}
+
+.button-large {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+}
+
+/* --- Barra de Navegação (Navbar) --- */
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Adicionado para garantir largura total */
+  height: var(--altura-nav);
+  background-color: transparent; /* Começa transparente */
+  z-index: 1000;
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease; /* Transição suave */
+}
+
+/* Classe adicionada via JS na rolagem */
+.main-nav.scrolled {
+  background-color: rgba(
+    87,
+    40,
+    22,
+    0.9
+  ); /* Cor --cor-principal-escura com transparência */
+  backdrop-filter: blur(10px);
+}
+
+.main-nav .container {
+  display: flex;
+  justify-content: space-between; /* Alinha logo à esquerda e menu à direita */
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.nav-logo img {
+  height: 110px;
+  transition: height 0.4s ease; /* Adiciona transição para a altura */
+}
+
+.nav-logo {
+  /* A logo agora fica no fluxo normal do flex container */
+  /* Ajustes de posicionamento absoluto removidos */
+  margin-top: 35px; /* Desce a logo um pouco */
+  margin-left: -30px;
+  transition: margin-top 0.4s ease, margin-left 0.4s ease; /* Adiciona transição */
+}
+
+/* Ajusta a logo quando a página é rolada */
+.main-nav.scrolled .nav-logo {
+  margin-top: 0;
+  margin-left: -15px; /* Ajusta a margem para centralizar melhor */
+}
+
+.nav-menu ul {
+  display: flex;
+  gap: 36px; /* Reduz o espaçamento para acomodar o novo botão */
+  align-items: center; /* Alinha verticalmente os links e o botão */
+}
+
+/* Reduz o tamanho da imagem da logo quando a página é rolada */
+.main-nav.scrolled .nav-logo img {
+  height: 65px; /* Altura para caber dentro da navbar de 70px */
+}
+
+.nav-menu a {
+  color: var(--cor-creme);
+  font-weight: 500;
+  padding: 5px 1 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Sombra para legibilidade */
+}
+
+.nav-menu a:hover {
+  border-color: var(--cor-destaque);
+}
+
+/* Estilo específico para o botão na navegação */
+.nav-button {
+  display: inline-flex; /* Usa flexbox para alinhar o ícone e o texto */
+  align-items: center; /* Centraliza verticalmente o conteúdo do botão */
+  gap: 8px; /* Adiciona um espaço entre o ícone e o texto */
+  padding: 8px 18px; /* Padding menor para se ajustar à navbar */
+  font-weight: 500;
+  border-radius: 25px; /* Deixa o botão bem mais arredondado */
+  /* A transição agora herda do .button, sem efeitos extras */
+}
+
+/* Adiciona o ícone de sorvete antes do texto */
+.nav-button::before {
+  content: ""; /* Remove o emoji para usar uma imagem de fundo */
+  display: inline-block; /* Permite definir dimensões para o ícone */
+  width: 20px; /* Largura do ícone */
+  height: 20px; /* Altura do ícone */
+  background-image: url("imagens/icone.png"); /* Caminho para a sua imagem */
+  background-size: contain; /* Garante que o ícone se ajuste ao espaço */
+  background-repeat: no-repeat; /* Impede que o ícone se repita */
+}
+
+/* Efeito de hover aprimorado */
+.nav-button:hover {
+  /* Remove os efeitos de transform e box-shadow para um hover mais simples */
+}
+
+/* --- Botão do Menu (Toggler) --- */
+.navbar-toggler {
+  display: none; /* Escondido por padrão */
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative; /* Para garantir que fique sobre outros elementos se necessário */
+}
+
+.navbar-toggler span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--cor-creme);
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animação do Toggler para "X" */
+.navbar-toggler.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggler.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- Carrossel --- */
+#heroCarousel {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  overflow: hidden;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: #fff;
+  text-align: center;
+  width: 90%;
+  opacity: 0; /* Esconde a legenda por padrão */
+}
+
+/* Animação para o texto surgir */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px); /* Começa um pouco abaixo */
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0); /* Termina na posição original */
+  }
+}
+
+/* Aplica a animação na legenda do slide ativo */
+.carousel-item.active .carousel-caption {
+  animation: fadeInUp 1.5s ease-out 0.5s; /* nome, duração, timing, delay */
+  animation-fill-mode: backwards; /* Garante que o estado inicial da animação seja aplicado */
+  opacity: 1; /* Garante que o item permaneça visível após a animação */
+}
+
+.carousel-caption h2 {
+  font-size: 45px;
+  font-weight: 700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background-color: transparent; /* Remove o fundo do botão */
+  color: white;
+  border: none;
+  font-size: 2.5rem;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: color 0.3s ease; /* Transição para a cor do ícone */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7); /* Adiciona sombra para legibilidade */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: transparent; /* Mantém o fundo transparente no hover */
+  color: var(--cor-destaque); /* Muda a cor da seta no hover */
+}
+
+.carousel-control-prev {
+  left: 15px;
+}
+
+.carousel-control-next {
+  right: 15px;
+}
+
+/* --- Estilos de Seção --- */
+section {
+  padding: 120px 0;
+  scroll-margin-top: var(
+    --altura-nav
+  ); /* Garante que o menu não cubra o título da seção ao navegar */
+}
+
+.section-light {
+  background-color: #f8f9fa;
+}
+
+h2.section-title {
+  font-weight: bold;
+  color: var(--cor-principal-escura);
+  margin-bottom: 100px;
+  font-size: 45px;
+  text-align: center;
+}
+
+/* Adiciona um fundo bege para destacar a seção */
+#produtos {
+  background-color: var(--cor-bege);
+}
+
+/* --- Grid de Produtos --- */
+.product-grid {
+  display: grid;
+  /* Cria 5 colunas em telas grandes, e vai se adaptando para telas menores */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
+  border-radius: 8px; /* Arredonda os cantos do container do grid */
+  overflow: hidden; /* Garante que o conteúdo interno respeite os cantos arredondados */
+}
+
+.card {
+  border: none; /* Remove a borda que criava o espaçamento */
+  height: 500px;
+  border-radius: 0; /* Remove o arredondamento individual dos cards */
+  overflow: hidden;
+  background-color: #fff;
+  position: relative; /* Para posicionar o conteúdo sobre a imagem */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Efeito de hover na imagem */
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card img {
+  width: 100%;
+  height: 100%; /* Faz a imagem cobrir o card inteiro */
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+  transition: transform 0.4s ease; /* Transição suave para o zoom */
+}
+
+.card-body {
+  padding: 20px;
+  position: absolute; /* Coloca o conteúdo sobre a imagem */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff; /* Cor do texto branca para contraste */
+  text-align: center;
+  /* Gradiente para melhorar a legibilidade do texto */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.card-title {
+  font-weight: bold;
+  margin-bottom: 20px; /* Aumenta o espaço para compensar o parágrafo removido */
+  font-size: 26px;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+  color: #eee; /* Cor do texto mais suave */
+}
+
+.card .button {
+  background-color: var(--cor-principal-clara);
+}
+
+.card .button:hover {
+  background-color: #fff; /* Adiciona o fundo branco no hover */
+  color: var(--cor-destaque);
+  border-color: var(--cor-destaque);
+}
+
+/* --- Seção de Vídeo --- */
+.two-columns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Empurra os itens para as extremidades */
+}
+
+.two-columns > div {
+  flex: 1; /* Por padrão, as colunas dividem o espaço igualmente */
+}
+
+/* Ajuste para a seção Sobre Nós, dando mais espaço para a imagem */
+#sobre .two-columns .text-content {
+  flex-basis: 30%; /* Define a largura base da coluna de texto */
+  flex-grow: 0; /* Impede que a coluna de texto cresça */
+  margin-left: 80px; /* Adiciona um espaço à esquerda do texto */
+}
+
+/* Aumenta o container da seção Sobre para maior separação */
+#sobre .container {
+  max-width: 1280px;
+}
+
+.two-columns .section-title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Proporção 16:9 */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilo para imagens em layout de duas colunas */
+.media-content img {
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Seção Depoimentos --- */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid var(--cor-principal-clara);
+  text-align: center;
+}
+
+/* Adiciona um fundo bege para destacar a seção */
+#depoimentos {
+  background-color: var(--cor-bege);
+}
+
+.testimonial-card .stars {
+  color: var(--cor-destaque);
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.testimonial-card .author {
+  font-weight: bold;
+  color: var(--cor-principal-escura);
+}
+
+/* --- Header de Páginas Internas --- */
+.page-header {
+  background-color: var(--cor-principal-escura);
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.page-header .nav-logo {
+  margin-top: 0;
+  margin-left: 0;
+  position: absolute;
+  left: 15px;
+}
+
+.page-header .container {
+  display: flex;
+  justify-content: center; /* Centraliza o conteúdo */
+  align-items: center;
+  position: relative;
+  height: 80px; /* Aumenta a altura do header */
+}
+
+.page-header .nav-logo img {
+  height: 100px; /* Aumenta a logo */
+}
+
+.page-header .button {
+  position: absolute; /* Posiciona o botão de forma independente */
+  right: 15px; /* Alinha o botão à direita */
+}
+
+/* --- Formulário de Contato --- */
+.contact-form {
+  max-width: 700px;
+  margin: 40px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form .form-group {
+  display: flex;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--cor-principal-clara);
+  box-shadow: 0 0 0 3px rgba(197, 158, 88, 0.2);
+}
+
+/* Estilo para campos inválidos */
+.contact-form input.invalid,
+.contact-form textarea.invalid {
+  border-color: #dc3545; /* Vermelho para erro */
+}
+
+.success-message {
+  padding: 15px;
+  background-color: #198754; /* Verde para sucesso */
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-form button {
+  align-self: center;
+}
+
+/* Estilos para o campo de upload de arquivo */
+.file-upload-label {
+  flex-basis: 30%; /* Define uma largura base para o label */
+  text-align: right;
+  padding-right: 10px;
+  color: #555;
+  align-self: center;
+}
+
+/* Estilo para o label do arquivo quando o input é inválido */
+.contact-form .file-input.invalid + .file-upload-label, /* Para quando o label vem depois */
+.contact-form .file-input.invalid ~ .file-upload-label {
+  /* Para quando o label vem depois (geral) */
+  color: #dc3545; /* Vermelho para erro */
+}
+
+.contact-form .file-input {
+  flex-grow: 1; /* Faz o input ocupar o espaço restante */
+  border: none;
+  padding: 12px 0;
+}
+
+.contact-form .file-input:focus {
+  box-shadow: none; /* Remove o foco do input de arquivo */
+}
+
+.contact-form .form-group {
+  align-items: center; /* Alinha verticalmente label e input */
+}
+
+/* Ajuste para a seção de formulário em página dedicada */
+#trabalhe-conosco-form {
+  padding: 80px 0;
+}
+
+/* Adiciona um fundo bege para destacar a seção */
+#franquia {
+  background-color: var(--cor-bege);
+}
+
+/* --- Seção Localização --- */
+.location-content {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.location-info {
+  flex: 1;
+}
+
+.location-info h3 {
+  font-size: 2rem;
+  color: var(--cor-principal-escura);
+  margin-bottom: 20px;
+}
+
+.location-info p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.map-container {
+  flex: 1.5; /* Dá um pouco mais de espaço para o mapa */
+}
+
+.map-container iframe {
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Garante que o iframe preencha o container */
+}
+
+/* --- Footer --- */
+footer {
+  background-color: var(--cor-principal-escura);
+  color: var(--cor-creme);
+  text-align: center;
+  padding: 25px 0;
+}
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  h2.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+  }
+
+  .carousel-caption h2 {
+    font-size: 1.8rem;
+  }
+
+  .lead {
+    font-size: 1.1rem;
+  }
+
+  /* --- Menu Responsivo --- */
+  .navbar-toggler {
+    display: block; /* Mostra o botão de hambúrguer */
+    z-index: 2;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 0;
+    right: -100%; /* Começa fora da tela */
+    width: 60%;
+    height: 100vh;
+    background-color: var(--cor-principal-escura);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 1;
+  }
+
+  .nav-menu.show {
+    transform: translateX(0);
+    right: 0;
+  }
+
+  .nav-menu ul {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    /* Reseta posicionamento do desktop */
+    position: static;
+    top: auto;
+    left: auto;
+  }
+
+  .nav-logo {
+    /* Ajusta a logo para o menu mobile */
+    margin-top: 0;
+    margin-left: -15px;
+    z-index: 3; /* Garante que a logo fique acima do menu overlay */
+  }
+
+  .nav-logo img {
+    height: 90px;
+  }
+
+  /* --- Layout de 2 colunas vira 1 coluna --- */
+  .two-columns {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  #sobre .two-columns .text-content {
+    margin-left: 0; /* Remove a margem da versão desktop */
+    flex-basis: auto;
+  }
+
+  .two-columns .section-title {
+    text-align: center;
+  }
+
+  /* --- Formulários --- */
+  .contact-form .form-group {
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch; /* Garante que os itens ocupem a largura total */
+  }
+
+  .file-upload-label {
+    text-align: left; /* Alinha o texto do label à esquerda no mobile */
+    padding-right: 0;
+  }
+
+  /* --- Localização Responsiva --- */
+  .location-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .location-info .button {
+    margin-bottom: 30px;
+  }
+}

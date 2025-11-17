@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html
+  lang="pt-br"
+  xmlns:mso="urn:schemas-microsoft-com:office:office"
+  xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gelateria Romano</title>
+    <link rel="stylesheet" href="style/style.css" />
+
+    <!--[if gte mso 9
+      ]><xml>
+        <mso:CustomDocumentProperties>
+          <mso:_ApprovalStatus msdt:dt="string">0</mso:_ApprovalStatus>
+          <mso:_ApprovalAssignedTo msdt:dt="string"></mso:_ApprovalAssignedTo>
+          <mso:_ApprovalRespondedBy msdt:dt="string"></mso:_ApprovalRespondedBy>
+        </mso:CustomDocumentProperties> </xml
+    ><![endif]-->
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="main-nav">
+        <div class="container">
+          <a class="nav-logo" href="#home">
+            <img
+              src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666409/logo_sf0tjp.png"
+              alt="Gelateria Romano Logo"
+            />
+          </a>
+          <button class="navbar-toggler" type="button">
+            <!-- Ícone de Hambúrguer (3 linhas) -->
+            <span></span><span></span><span></span>
+          </button>
+          <div class="nav-menu" id="navbarNav">
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#sobre">Sobre Nós</a></li>
+              <li><a href="#produtos">Produtos</a></li>
+              <li><a href="#localizacao">Localização</a></li>
+              <li>
+                <a
+                  href="trabalhe-conosco.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Trabalhe Conosco</a
+                >
+              </li>
+              <li>
+                <a href="#franquia" class="button nav-button"
+                  >SEJA UM FRANQUEADO</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="home">
+      <!-- Hero Section com Carrossel -->
+      <div id="heroCarousel">
+        <div class="carousel-item active">
+          <img
+            src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666401/hero1_ozbnae.jpg"
+            alt="Gelato 1"
+          />
+          <div class="carousel-caption">
+            <h2>Em cada colherada, uma história de tradição artesanal.</h2>
+            <a href="#localizacao" class="button">Encontre uma loja</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666401/hero2_xn3fca.jpg"
+            alt="Gelato 2"
+          />
+          <div class="carousel-caption">
+            <h2>O verdadeiro sabor italiano no Brasil.</h2>
+            <a href="#produtos" class="button">Conheça nossos produtos</a>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666400/freezer2_f6gvbd.jpg"
+            alt="Gelato 3"
+          />
+          <div class="carousel-caption">
+            <h2>Feito com paixão e ingredientes frescos.</h2>
+            <a href="#sobre" class="button">Saiba mais</a>
+          </div>
+        </div>
+        <!-- Controles -->
+        <button class="carousel-control-prev" type="button">‹</button>
+        <button class="carousel-control-next" type="button">›</button>
+      </div>
+
+      <!-- Seção Produtos -->
+      <section id="produtos" class="section-light">
+        <div class="container">
+          <h2 class="section-title text-center">Conheça nossos produtos</h2>
+          <div class="product-grid">
+            <!-- Card 1 -->
+            <div class="card">
+              <img
+                src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666400/chocolate_cwg50p.jpg"
+                alt="Gelatos"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Gelatos</h5>
+                <a href="#" class="button">Conheça</a>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+              <img
+                src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666414/sorbet_suywnt.jpg"
+                alt="Sorbets"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Sorbets</h5>
+                <a href="#" class="button">Conheça</a>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+              <img
+                src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666410/picole_rllkau.jpg"
+                alt="Picolés"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Picolés</h5>
+                <a href="#" class="button">Conheça</a>
+              </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="card">
+              <img
+                src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666414/cafe_dee3ot.jpg"
+                alt="Cafés"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Cafés</h5>
+                <a href="#" class="button">Conheça</a>
+              </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="card">
+              <img
+                src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666400/doce_q05dbu.jpg"
+                alt="Doces"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Doces</h5>
+                <a href="#" class="button">Conheça</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Sobre Nós -->
+      <section id="sobre">
+        <div class="container two-columns">
+          <div class="media-content">
+            <img
+              src="https://res.cloudinary.com/dqmdqljmi/image/upload/v1760666401/gelateria_odpcez.jpg"
+              alt="Interior da Gelateria Romano"
+            />
+          </div>
+          <div class="text-content">
+            <h2 class="section-title">Sobre Nós</h2>
+            <p class="lead">
+              A Gelateria Romano traz a autêntica tradição italiana para o
+              coração do Brasil. Nossos gelatos são feitos diariamente com
+              ingredientes frescos e selecionados, sem adição de conservantes,
+              para garantir um sabor puro e inesquecível.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Depoimentos -->
+      <section id="depoimentos">
+        <div class="container">
+          <h2 class="section-title text-center">O que nossos clientes dizem</h2>
+          <div class="testimonials-grid">
+            <!-- Depoimento 1 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">
+                "O melhor gelato que já provei fora da Itália! O de pistache é
+                simplesmente divino. Atendimento impecável e ambiente super
+                aconchegante."
+              </p>
+              <p class="author">- Mariana S.</p>
+            </div>
+            <!-- Depoimento 2 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">
+                "Uma experiência incrível! Sabores autênticos e ingredientes de
+                altíssima qualidade. Recomendo a todos que amam um bom gelato
+                artesanal."
+              </p>
+              <p class="author">- Carlos F.</p>
+            </div>
+            <!-- Depoimento 3 -->
+            <div class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p class="quote">
+                "A Gelateria Romano virou meu lugar favorito para uma sobremesa.
+                O sorbet de framboesa é refrescante e delicioso. Vale cada
+                centavo!"
+              </p>
+              <p class="author">- Beatriz L.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Localização -->
+      <section id="localizacao" class="section-light">
+        <div class="container">
+          <h2 class="section-title text-center">Onde nos encontrar</h2>
+          <div class="location-content">
+            <div class="location-info">
+              <h3>Nossa Loja Principal</h3>
+              <p>
+                Venha nos visitar no coração de São Paulo e desfrutar de uma
+                experiência única. Estamos esperando por você!
+              </p>
+              <p>
+                <strong>Endereço:</strong><br />Av. Paulista, 1234<br />Bela
+                Vista, São Paulo - SP
+              </p>
+              <p>
+                <strong>Horário de Funcionamento:</strong><br />Seg - Dom: 10:00
+                - 22:00
+              </p>
+              <a
+                href="https://maps.app.goo.gl/haX8ju1ZiMQ1Kz6m6"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="button"
+                >Ver no mapa</a
+              >
+            </div>
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.197532433403!2d-46.65883102376666!3d-23.56137186169707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1683748058482!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Seja um Franqueado -->
+      <section id="franquia" class="section-light">
+        <div class="container">
+          <h2 class="section-title text-center">Seja um Franqueado</h2>
+          <p class="lead text-center">
+            Leve o sabor autêntico da Gelateria Romano para a sua cidade.
+            Preencha o formulário e saiba mais sobre nosso modelo de franquia.
+          </p>
+          <form id="form-franquia" class="contact-form" novalidate>
+            <div class="success-message" style="display: none">
+              Sua solicitação foi enviada com sucesso! Entraremos em contato em
+              breve.
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                name="nome-franquia"
+                placeholder="Nome completo"
+                required
+              />
+              <input
+                type="email"
+                name="email-franquia"
+                placeholder="Seu melhor e-mail"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="tel"
+                name="telefone-franquia"
+                placeholder="Telefone"
+                required
+              />
+              <input
+                type="text"
+                name="cidade-estado"
+                placeholder="Cidade / Estado"
+                required
+              />
+            </div>
+            <textarea
+              name="mensagem-franquia"
+              rows="6"
+              placeholder="Por que você gostaria de ser um franqueado?"
+            ></textarea>
+            <button type="submit" class="button button-large">
+              Enviar Interesse
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2024 Gelateria Romano. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="java.js"></script>
+  </body>
+</html>
